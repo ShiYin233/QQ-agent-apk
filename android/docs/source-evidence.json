@@ -1,0 +1,18 @@
+{
+  "kind": "source-review-only",
+  "runtimeComponentsVerified": false,
+  "napcatLicense": {
+    "source": "https://raw.githubusercontent.com/NapNeko/NapCatQQ/454cc0eda260f13d1828ab4992d7e268ace9d812/LICENSE",
+    "sha256": "2bbc0dba0c62fcde4adfe38ebadad0b7d4e23b06b88d9551904bbe07769dc46f"
+  },
+  "napcatDocs": {
+    "repository": "https://github.com/NapNeko/NapCatDocs",
+    "commit": "5e43a42288118870f6340cdb981d359b003014ac",
+    "path": "src/guide/boot/Shell.md"
+  },
+  "napcatInstaller": {
+    "repository": "https://github.com/NapNeko/NapCat-Installer",
+    "commit": "5cb4e92aa07cfa165bf303a5f5113bc5d0753b4a",
+    "path": "script/install.termux.sh"
+  }
+}

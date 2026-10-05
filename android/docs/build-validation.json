@@ -1,0 +1,92 @@
+{
+  "firstGate": "BLOCKED",
+  "blockedStage": "COMPONENTS",
+  "deviceExecution": "NOT_RUN",
+  "candidateDevice": {
+    "model": "OPPO A6m 5G",
+    "soc": "Dimensity 6300",
+    "rom": "ColorOS 15",
+    "source": "user-reported; not connected"
+  },
+  "adbDevices": [],
+  "applicationId": "cn.qqagent.android.gate",
+  "sdk": {
+    "min": 31,
+    "compile": 36,
+    "target": 28
+  },
+  "build": {
+    "assembleDebug": "PASSED",
+    "testDebugUnitTest": "PASSED",
+    "lintDebug": "PASSED_WITH_WARNINGS",
+    "lintIssues": [
+      {
+        "id": "ChromeOsAbiSupport",
+        "severity": "Warning"
+      },
+      {
+        "id": "ExpiredTargetSdkVersion",
+        "severity": "Warning"
+      },
+      {
+        "id": "UsableSpace",
+        "severity": "Warning"
+      }
+    ],
+    "gradle": "8.13",
+    "agp": "8.13.2",
+    "kotlin": "2.2.21",
+    "jdk": "Temurin 21.0.8+9"
+  },
+  "unitTests": [
+    {
+      "name": "cn.qqagent.android.gate.VerifiedDownloadTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.qqagent.android.gate.GatePolicyTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "nodeBaseline": {
+    "selftest": {
+      "passed": 41,
+      "failed": 0
+    },
+    "whitelistBackend": {
+      "passed": 4,
+      "failed": 0
+    },
+    "whitelistFrontend": {
+      "passed": 6,
+      "failed": 0
+    },
+    "scope": "Linux mock baseline; not an Android execution"
+  },
+  "apk": {
+    "filename": "QQ-Agent-0.1.0-gate-check-arm64-debug.apk",
+    "sha256": "b43950051130bb20096228c2db4bb754ee451ed27e55ac896e52752bf81e30eb",
+    "signature": "Android local debug key; v2 signature verified; not production release signing",
+    "certificateSha256": "19dbf537cc7055c3d1661fd3ed5d9554599d42cfd59799ee24306057dd67faf7",
+    "jniLibraries": [
+      "lib/arm64-v8a/libandroidx.graphics.path.so"
+    ],
+    "zipalign16k": "PASSED; does not establish PRoot/QQ/16KB runtime compatibility"
+  },
+  "runtimeComponents": {
+    "bundledProot": false,
+    "completeVerifiedLock": false,
+    "initialization": "NOT_RUN",
+    "login": "NOT_RUN",
+    "contacts": "NOT_RUN",
+    "messaging": "NOT_RUN",
+    "modelReply": "NOT_RUN",
+    "twentyFourHourTest": "NOT_RUN"
+  }
+}
