@@ -1,65 +1,57 @@
-# QQ Agent Android：第一关检查原型
+# QQ Agent Android：实机运行验证版
 
-**这不是可运行的 QQ 机器人 APK。第一关尚未通过，后续移植已停止。**
+当前源码与 APK 为 **0.5.2-join-review**，新增绝地潜兵2入群审核、审核状态和设置；历史实机已验证插件加载及只读接口，真实批准仍待验收。发布包不预填个人群号，已有配置保留；首次安装默认暂停聊天回复并关闭审核插件。入口见 [快速开始](../QUICKSTART.md)。
 
-本目录提供 Kotlin/Compose 最小工程和第一关检查器。应用可以检查设备、记录页大小和私有目录可用空间，输出明确的阻断结果。没有内置 ARM64 PRoot，也没有已核验的完整 Debian/Node/Linux QQ/NapCat 组件锁；因此不会初始化、下载运行组件或提示 QQ 登录。
+首页“模型账号 · ChatGPT / Google”保留实验性订阅登录。Google 凭据保存与核心重载后的恢复已验证，但项目初始化返回资格不足；ChatGPT 仍未完成真实订阅模型验证。正常使用请配置 API Key，详见 [订阅账号接入](docs/subscription-accounts.md)。此前 [登录与提及修复](docs/login-mention-repair.md)、[活跃设置修复](docs/activity-settings-repair.md) 继续保留；原 Node 核心源码保持不变。历史实机记录均标注版本和日期，不代表当前手机在线状态。
 
-用户约束：Android 12+、ARM64、无 Root、无外部 Termux、无远程服务器、保留日常 QQ。`minSdk=31`、`compileSdk=36`、`targetSdk=28`。构建声明 `arm64-v8a` ABI 过滤；检查 APK 的 Compose 依赖带有 `lib/arm64-v8a/libandroidx.graphics.path.so`，没有其他 ABI，也没有 PRoot native 引导。这不能证明完整运行组件或 16 KB 页兼容。设备检查器拒绝不支持 ARM64 的设备。
+用户约束为 Android 12+、ARM64、无 Root、无外部 Termux、无远程服务器、保留日常安卓 QQ。本应用包名 `cn.qqagent.android`，与早期 `cn.qqagent.android.gate` 检查原型不同。`minSdk=31`、`compileSdk=36`、`targetSdk=28` 是已接受的侧载配置，不是 Play 发布工程。
 
-首台候选：**OPPO A6m 5G / 天玑 6300 / ColorOS 15**（用户提供）。Android API、页大小、ROM build、剩余空间和实际兼容性等待设备报告；不从 ROM 名称推定实测结果。
+## 当前能力
 
-## 构建
+- ARM64 PRoot、64/32 位 loader 内置，并在执行前校验 SHA-256。对应源码、适配脚本和许可位于 [native](native/README.md)。
+- 四个外部运行归档固定版本和摘要；Debian、Node、安全解包、Linux QQ 依赖安装和 NapCat 启动已实测。首次准备会下载较大组件；当前 Windows 工具可将归档传入应用私有目录并核验手机端摘要，尚未做完整下载界面。
+- 原 Node 核心及锁定的纯 JS 生产依赖打包到 `agent-core.zip`，不包含个人配置、登录态、密钥或 Electron 二进制。
+- QQ 使用官方 ARM64 Linux 客户端及未修改的 NapCat Shell 归档。启动入口采用官方 Shell 接入方式；不改动日常安卓 QQ。
+- QQ WebUI 和 OneBot 仅监听 `127.0.0.1`，使用随机令牌。模型测试密钥通过手机公钥加密传入，以 Android Keystore AES-GCM 保存；测试进程短暂使用应用私有输入/配置，结束后清理明文配置。
+- 固定的调试验证入口不接收任意命令。收发测试必须先导入明确授权的好友和群；仅处理该测试账号发送的“安卓验证”消息，每个目标最多发送一条原 Agent 回复。测试自动到期，不作为长期运行入口。
 
-使用 JDK 17+、Android SDK 36、Build Tools 36.0.0 和 Gradle 8.13。Gradle Wrapper 固定分发版本与 SHA-256；插件和直接依赖固定版本。
+## 构建与安装
 
-创建本地测试签名（不提交密钥，已有文件时不得覆盖）：
+需要 JDK 17+、Android SDK 36、Build Tools 36.0.0；Gradle 8.13 由 Wrapper 获取。设置 `JAVA_HOME`、`ANDROID_HOME`；使用项目私有缓存即可，不需修改系统 PATH。保留现有 `.local-signing/debug.keystore`，避免覆盖安装时签名冲突；新机器按下方生成独立的 Android debug 签名。测试密钥不提交，正式签名尚未确定。
 
-```sh
+变更订阅 SDK 时先按 [subscription-runtime](subscription-runtime/README.md) 生成 assets 与许可证；普通安卓构建使用已生成的打包文件，不在手机上安装 npm。
+
+```powershell
 cd android
-mkdir -p .local-signing
-test -f .local-signing/debug.keystore || keytool -genkeypair \
-  -keystore .local-signing/debug.keystore -storepass android -keypass android \
-  -alias androiddebugkey -dname 'CN=Android Debug,O=Android,C=US' \
-  -keyalg RSA -keysize 2048 -validity 10000
-./gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug
+if (!(Test-Path .local-signing/debug.keystore)) {
+    New-Item -ItemType Directory -Force .local-signing | Out-Null
+    & "$env:JAVA_HOME/bin/keytool.exe" -genkeypair -keystore .local-signing/debug.keystore -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 -storepass android -keypass android -dname "CN=Android Debug,O=Android,C=US"
+}
+.\gradlew.bat :app:assembleDebug :app:testDebugUnitTest :app:lintDebug --console=plain
+adb -s <OPPO手机序列号> install -r app/build/outputs/apk/debug/app-debug.apk
+adb -s <OPPO手机序列号> shell am start -n cn.qqagent.android/cn.qqagent.android.gate.MainActivity
 ```
 
-设置 `ANDROID_HOME` 指向 SDK；JDK 必须包含 `javac`，JRE 不够。代理环境需使用可信 CA 和 Gradle 的代理配置，不可关闭 TLS 校验。用户要求的 targetSdk 28 小于 minSdk 31，AGP 会警告；不是 Play 商店发布工程。
+修改 SDK 源码后需先安装 `android/subscription-runtime` 的锁定开发依赖并重新生成 SDK。直接使用已提交的 assets 时，无需在电脑或手机安装该套依赖。首次运行组件下载和导入见 [快速开始](../QUICKSTART.md#2-首次导入运行组件)；安装 APK 不等于已准备好四个外部组件。
 
-测试密钥使用公开的 Android debug 密码，只适合本地检查。保留同一测试密钥可以升级测试 APK；它**不是已确定的发布签名**。正式签名、机器人升级保留数据和回滚均未完成，不应分发为正式机器人。
+应用提供八类 Compose 原生页面和实机诊断页。正式账号配置从空名单开始、自动回复暂停，先在协议管理选择并保存允许回复的群/好友，再由用户主动启用。此前有限收发测试不会重复发送。保持手机联网；二维码登录由本人完成。
 
-## 安装与设备报告
+手机报告在应用私有目录，debug 包可通过 `adb exec-out run-as cn.qqagent.android cat files/<报告名>` 导出。原核心 HTTP 验证通过有效令牌 200、无效令牌 401；这不等于 QQ 收发验证通过。
 
-安装检查 APK 到候选手机，打开“QQ Agent 第一关检查”，点击“检查第一关并记录设备信息”。当前预期是设备前置检查结果和“组件准备：阻断”。这不能证明 PRoot、QQ 或 NapCat 可以运行。
+## 验证与数据
 
-```sh
-adb devices -l
-adb install -r app/build/outputs/apk/debug/app-debug.apk
-adb shell am start -n cn.qqagent.android.gate/.MainActivity
-# 点击检查按钮后，导出应用生成的报告；仅适用于本 debug APK
-adb exec-out run-as cn.qqagent.android.gate cat files/gate-report.json > gate-report.json
-adb shell getprop ro.build.version.sdk
-adb shell getprop ro.product.cpu.abilist
-adb shell getconf PAGE_SIZE
-```
+当前实测设备为 OPPO A6m 5G / PLT140、Android 15 / API 35、4 KB 页。模型连接测试请求 `deepseek-v4-flash-0731`，网关响应模型标识为 `dsv4-flash-vision`，正文 `pong`，121 tokens。这里只记录网关实际返回结果，不推断模型身份。
 
-无需 Root，不与安卓 QQ 包名或目录共享，不自动备份应用数据，不采集账号、密钥、聊天或登录态，也没有遥测。设备报告包含系统 fingerprint，分享前可以检查是否希望保留该设备标识。
+原始 QQ 日志包含账号、聊天内容、登录二维码和管理令牌。用户已明确授权在自己的电脑保存完整日志；本地记录位于 Git 忽略的 `runtime/local-setup/private-qq-logs`，不放入源码、APK 或共享交付物。源码中的验证文档仅包含计数和状态。APK 禁止系统自动备份；本地测试日志保留不等于完成正式加密备份功能。
 
-## 已实现的检查边界
+完整第一关与新功能的事实和待验项见 [gate-report](docs/gate-report.md)，版本、摘要和许可边界见 [components](docs/components.md)。原生页面与实机报告读取真实结果。模型配置加密保存，经 stdin 注入核心内存，配置文件排除密钥；仅监听 127.0.0.1:3312 的 HTTP/SSE 使用私有令牌。
 
-- 第一关每一步区分通过、失败、阻断、未执行；前置检查通过不算端到端通过。
-- 五个组件的版本、HTTPS 来源、SHA-256、许可证据、下载与安装空间上限必须完整；APK 未内置 PRoot 时禁止推进。
-- 下载器使用正常 TLS 校验，限制大小和重定向次数，拒绝降级到 HTTP；仅在完整 SHA-256 校验后保存 artifact。
-- 取消、断流、校验失败或空间写入错误会删除本次临时文件；不会覆盖旧运行组件。下载器尚未接入 UI、解包或运行环境，不能声称已验证完整初始化或组件回滚。
+原生前台服务管理 QQ 与核心，常驻通知已开启，含暂停/恢复/停止；QQ 自动恢复约 30.8 秒已有实测。手机 FFmpeg 和安卓视频插件通过原核心图片压缩、GIF 转视频、VideoReader 抽帧检查。原核心内置工具、外部扩展列表/开关/重扫及社区口令安装入口已接入；社区真实安装仍待验。
 
-## 第一关继续条件
+OPPO 耗电管理的“智能优化后台运行”下，已观察到 USB 保持连接时熄屏接口超时、运行报告停止更新。切换“完全允许后台行为”后，0.4.1 的 77.5 秒 / 5 次采样检查通过；0.4.2 设置页新增手机后台设置入口，安装后结果见 build-validation.json。这是短时 USB 连接检查，不代表 Doze 或全天后台运行通过。
 
-1. 为独立包名构建、打包、核验 ARM64 Android PRoot 及其依赖和许可证义务。Termux 的现成包包含固定前缀及依赖，不能假定改名或复制就能运行。
-2. 取得可复现的五组件版本/来源/哈希/许可证据，验证 rootfs 解包、权限、软链接、Android 私有目录执行、PRoot ptrace 和 16 KB 页。
-3. 在候选手机完成首次初始化、QQ 登录、群与好友列表、私聊与群聊双向收发，以及接原 Agent 的一次真实模型回复，记录日志。
+本地工具 export_device_reports.py 导出手机报告，verify_native_console.py 核验认证/空名单/配置写回/密钥排除，verify_native_pages.py 只导航实际原生页面。export_private_logs.py --authorized-private-logs 在完整日志留存获明确授权后同步当前与归档日志。报告和截图保存在 Git 忽略的 runtime/local-setup，不随共享 APK 分发。
 
-当前云环境的 ADB 设备列表为空。不能把云端 Node 模拟测试、成功构建或检查 APK 当作上述真机证据。不能转为外部 Termux、远程服务器或修改版 QQ 来绕过关卡。
+## 后续边界
 
-## 后续范围
-
-只有第一关全部通过才推进原生八类页面、HTTP token/SSE 与回环接口、平台进程适配、媒体依赖、扩展、社区登录、前台服务/通知/恢复、账号隔离、加密备份、组件回滚、正式签名和升级。24 小时真机稳定性、Android 12/较新系统、另一种 ROM 和 16 KB 页测试均尚未执行。见 [验证报告](docs/gate-report.md) 和 [组件审查](docs/components.md)。
+八页的全部桌面操作与弹窗对齐、完整应用内首次下载、账号切换、其他模型/搜索/扩展秘密字段设置、社区登录/验证码、加密备份、组件回滚及正式签名仍待完成。24 小时锁屏、断网/重连、重启、Android 12、另一种 ROM、16 KB 页与耗电温度尚未验收。当前为用户本机调试版，不宣称正式分发就绪。

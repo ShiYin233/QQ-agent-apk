@@ -1,0 +1,136 @@
+{
+  "schema": 6,
+  "timestamp": "2026-10-07T07:09:45.629074",
+  "appVersion": "0.5.1-subscription-setup",
+  "artifact": {
+    "path": "android/artifacts/QQ-Agent-0.5.1-subscription-setup-arm64-debug.apk",
+    "bytes": 31113689,
+    "sha256": "478fba660c1abafda28b81cb9495b18afedd5b7dbd6f5a36601f311c9dc11a91",
+    "signing": "Existing debug certificate; APK v2 verified",
+    "alignment": "zipalign -c -P 16 4 passed; does not establish 16KB runtime compatibility"
+  },
+  "hostValidation": {
+    "androidTests": 25,
+    "nodeTests": 52,
+    "lintErrors": 0,
+    "originalCoreUnchanged": true
+  },
+  "subscriptionImplementation": {
+    "chatgpt": "Official public registration, identity-checked OAuth and account-specific catalog; Pi 1.0.4 Responses transport",
+    "google": "Pinned Pi 0.60.0 with reproducible grant-save hook and independent project setup/retry; no Antigravity login",
+    "googleThirdPartyOAuthCurrentlyNotSupportedByProvider": true,
+    "googleAuthorizationSavedBeforeSetup": true,
+    "encryptedCredentials": "Android Keystore AES-256-GCM; app-private authenticated loopback bridge",
+    "originalApiPreserved": true,
+    "switchAndDisconnectPauseReplies": true,
+    "loginFailuresHaveSafeStageDiagnostics": true
+  },
+  "deviceValidation": {
+    "schema": 1,
+    "timestamp": "2026-10-07T07:05:22.775542",
+    "appVersion": "0.5.1-subscription-setup",
+    "qqMessagesSentByVerification": 0,
+    "externalModelCallsByVerification": 0,
+    "actualSubscriptionAuthorizationsVerified": false,
+    "passed": true,
+    "installedVersionVerified": true,
+    "automaticRepliesRemainPaused": true,
+    "qqConnected": true,
+    "userSettingsAndEncryptedManualApiPreserved": true,
+    "providerModelCounts": {
+      "chatgpt-plus": 0,
+      "google-ai-pro": 6
+    },
+    "statusExcludesCredentials": true,
+    "privateApiAuthenticationVerified": true,
+    "homeAccountEntryAndChatgptLoginVisible": true,
+    "googleLoginVisible": true
+  },
+  "phoneOfflineSdkFixtures": {
+    "passed": true,
+    "nodeVersion": "v22.20.0",
+    "jwtSignatureAndAudienceVerified": true,
+    "openaiBundledStreamFixturePassed": true,
+    "googleBundledStreamFixturePassed": true,
+    "networkCalls": 0,
+    "qqMessagesSent": 0,
+    "usesRealCredentials": false
+  },
+  "nativeOAuthListenerValidation": {
+    "schema": 1,
+    "bothNativeOAuthListenersAndCancellationVerified": true,
+    "credentialAuthorizationsCompleted": false,
+    "qqMessagesSent": 0,
+    "modelCalls": 0
+  },
+  "phoneUnauthenticatedConnectivity": {
+    "usesRealCredentials": false,
+    "modelCalls": 0,
+    "qqMessagesSent": 0,
+    "services": [
+      {
+        "service": "google-account",
+        "reachable": true,
+        "httpStatus": 200
+      },
+      {
+        "service": "google-token",
+        "reachable": true,
+        "httpStatus": 400
+      },
+      {
+        "service": "google-model-service",
+        "reachable": true,
+        "httpStatus": 401
+      },
+      {
+        "service": "openai-identity",
+        "reachable": true,
+        "httpStatus": 200
+      },
+      {
+        "service": "openai-model-service",
+        "reachable": false,
+        "errorCode": "TimeoutError"
+      }
+    ]
+  },
+  "realAccountValidation": {
+    "chatgptAuthorized": false,
+    "googleAuthorized": true,
+    "googleCredentialRestoredAfterCoreReload": true,
+    "googleModelReady": false,
+    "googleSetupCode": "INELIGIBLE",
+    "specificGoogleIneligibilityReasonConfirmed": false,
+    "subscriptionInferenceVerified": false,
+    "qqMessagesSent": 0
+  },
+  "googleAuthorizationDeviceValidation": {
+    "schema": 1,
+    "timestamp": "2026-10-07T07:08:49.694970",
+    "appVersion": "0.5.1-subscription-setup",
+    "googleAuthorizationSaved": true,
+    "encryptedCredentialFilePresent": true,
+    "credentialRestoredAfterCoreReload": true,
+    "credentialCipherUnchangedAcrossReload": true,
+    "googleModelReady": false,
+    "setupCode": "INELIGIBLE",
+    "safeSetupError": "Google 未返回明确的资格失败原因。",
+    "specificIneligibilityReasonConfirmed": false,
+    "subscriptionInferenceVerified": false,
+    "externalModelCallsByVerification": 0,
+    "qqMessagesSentByVerification": 0,
+    "automaticRepliesRemainPaused": true
+  },
+  "providerDocumentation": {
+    "antigravityThirdPartyLoginPolicy": "https://www.antigravity.google/docs/faq/",
+    "geminiCliThirdPartyOAuthPolicy": "https://geminicli.com/docs/resources/faq/",
+    "supportedAntigravitySdkUsesApiKeyOrEnterprise": "https://www.antigravity.google/docs/sdk/overview/"
+  },
+  "remaining": [
+    "Google project/model setup returned ineligible; specific cause not confirmed, real Gemini subscription inference remains unverified",
+    "Real ChatGPT Plus authorization and model pong",
+    "Prior Android-port long-duration, compatibility, backup, community and release checks remain outstanding"
+  ],
+  "historicalEvidence": "0.4.4 and 0.5.0 reports preserved separately; prior API/QQ send results do not establish subscription inference"
+}

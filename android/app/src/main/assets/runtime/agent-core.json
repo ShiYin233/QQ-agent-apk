@@ -1,0 +1,15 @@
+{
+  "id": "agent-core",
+  "version": "0.4.0",
+  "sourceCommit": "e2dc5bbeec4f2b5bde884676cd4917681da84d36",
+  "filename": "agent-core.zip",
+  "size": 2522793,
+  "sha256": "7f9db8a552b646b91eeea708822bd415081ac8054389c314baf7b6b780102e7d",
+  "installedBytes": 6072515,
+  "productionDependencies": {
+    "js-yaml": "5.4.1",
+    "argparse": "2.0.1",
+    "undici": "6.28.0",
+    "ws": "8.21.3"
+  }
+}

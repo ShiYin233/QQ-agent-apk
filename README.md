@@ -1,4 +1,17 @@
-# QQ Agent（桌面端）
+# QQ Agent Android
+
+当前安卓版本：**0.5.2-join-review**（Android 12+ / ARM64 调试验证版）。在手机内运行 QQ Agent 原核心、Linux QQ 与 NapCat，提供原生控制台、扫码登录、API 模型配置、回复名单、活跃设置与绝地潜兵2入群审核插件，无需 Root 或外部 Termux。
+
+**[快速开始](QUICKSTART.md)** · [安卓构建与说明](android/README.md) · [验证结果](android/docs/build-validation.json) · [下载 0.5.2 APK](https://github.com/ShiYin233/QQ-agent-apk/raw/refs/heads/main/android/artifacts/QQ-Agent-0.5.2-join-review-arm64-debug.apk)
+
+在已完成“第一关”实机联调的手机上覆盖安装 APK，完成 QQ 扫码登录。在“设置”保存 API 地址、模型名和 Key，在“协议管理”保存允许回复的群与好友，再到“活跃设置”保存 **1 档（仅被 @ 响应）**，最后手动启用名单内自动回复。私聊不受群聊档位影响；入群审核有独立开关，需先填写自己的群号。全新设备需电脑通过 USB 导入四个锁定组件，并完成首次真实 QQ/模型收发联调，详见快速开始。
+
+当前推荐使用已验证的 API Key 连接方式。ChatGPT / Google 订阅页面属于实验功能，尚未完成真实订阅推理验收；不能把浏览器显示登录成功当成模型可用。首次组件导入尚未集成一键下载，其他机型兼容性及长期后台运行仍待验证。早期 `0.1.0-gate-check` 产物仅用于环境检查。
+
+## 原桌面端说明
+
+以下保留原 Electron 版本的介绍；其中 SnowLuma、Windows 启动器和桌面安装命令适用于电脑端，安卓请使用上方指南。
+
 ![平台](https://img.shields.io/badge/platform-Windows%20%7C%20Electron-lightgrey)
 ![技术栈](https://img.shields.io/badge/stack-Node.js%20%7C%20原生前端-orange)
 ![测试](https://img.shields.io/badge/tests-24%20suites%20%E2%80%89620%2B%20assertions-brightgreen)

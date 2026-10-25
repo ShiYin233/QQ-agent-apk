@@ -1,0 +1,6 @@
+{
+  "id": "android-mention-identity", "name": "安卓账号提及识别", "version": "1.0.0", "apiVersion": 1,
+  "entry": "index.mjs", "category": "message", "enabledByDefault": true,
+  "description": "把协议已确认的直接提及传给模型，避免群名片与角色名字不同造成误判。",
+  "capabilities": [], "permissions": [], "settings": {}, "configSchema": {}
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "debian",
+    "version": "trixie-pd-v4.26.0",
+    "url": "https://github.com/termux/proot-distro/releases/download/v4.26.0/debian-trixie-aarch64-pd-v4.26.0.tar.xz",
+    "sha256": "cda75346f2c9e09e8a802665745b5a7e2bd6d8584dbf1c86c8c57ef54c4e2d3c",
+    "license": "Debian package-specific licenses in /usr/share/doc/*/copyright",
+    "filename": "debian-trixie-aarch64-pd-v4.26.0.tar.xz",
+    "size": 35407044,
+    "hashEvidence": "upstream-published"
+  },
+  {
+    "id": "node",
+    "version": "22.20.0",
+    "url": "https://nodejs.org/dist/v22.20.0/node-v22.20.0-linux-arm64.tar.xz",
+    "sha256": "06907b9c088ce62305bc1530e5c1ae1510245114645768f7750c349c5b6fe667",
+    "license": "MIT plus bundled dependency notices in LICENSE",
+    "filename": "node-v22.20.0-linux-arm64.tar.xz",
+    "size": 29921788,
+    "hashEvidence": "upstream-published"
+  },
+  {
+    "id": "linux-qq",
+    "version": "3.2.32-52194",
+    "url": "https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_arm64_01.deb",
+    "sha256": "8796ccfd66acc025ef18db37185532d40bc8c58921e17da6d28c295acbcf8f92",
+    "license": "Tencent proprietary Linux QQ; official CDN artifact, formal redistribution terms audit pending",
+    "filename": "QQ_3.2.32_260812_arm64_01.deb",
+    "size": 205524324,
+    "hashEvidence": "computed-after-TLS-official-CDN-download; no upstream checksum published"
+  },
+  {
+    "id": "napcat",
+    "version": "4.18.30",
+    "url": "https://github.com/NapNeko/NapCatQQ/releases/download/v4.18.30/NapCat.Shell.zip",
+    "sha256": "902207c64c249eae98f868e41d5546920d78d7ecb5eae8cabb5b3d6fae556583",
+    "filename": "NapCat.Shell-v4.18.30.zip",
+    "size": 29500098,
+    "hashEvidence": "GitHub release asset digest",
+    "license": "NapCat Limited Redistribution License; unmodified upstream archive"
+  }
+]

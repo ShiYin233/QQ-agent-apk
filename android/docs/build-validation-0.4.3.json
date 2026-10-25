@@ -1,0 +1,78 @@
+{
+  "schema": 3,
+  "timestamp": "2026-10-07T05:43:51.112521",
+  "appVersion": "0.4.3-activity-settings",
+  "applicationId": "cn.qqagent.android",
+  "originalCoreCommit": "e2dc5bbeec4f2b5bde884676cd4917681da84d36",
+  "originalCoreSourcesChanged": false,
+  "build": {
+    "assembleDebug": "PASSED",
+    "androidUnitTests": 21,
+    "androidUnitTestFailures": 0,
+    "nodeRegressionTests": 20,
+    "lintErrors": 0,
+    "lintWarnings": 14
+  },
+  "apk": {
+    "filename": "QQ-Agent-0.4.3-activity-settings-arm64-debug.apk",
+    "bytes": 31144372,
+    "sha256": "ddab723d250434baa2f9a3a12f9736f8b164547d606b2fe8f43d31f46b8e0e3d",
+    "signing": "Local debug signing; certificate unchanged; signature and alignment checked separately"
+  },
+  "incident": {
+    "userReportedAccountRestriction": true,
+    "observedProfile": {
+      "contextTier": 4,
+      "contextSliderPosMissing": true,
+      "allowedGroups": 4,
+      "peakScheduleEnabled": false,
+      "chatActiveEnabled": false
+    },
+    "reason": "Android UI omitted activity settings; legacy core default resolved ordinary group messages to tier 4. No claim about Tencent internal enforcement reason.",
+    "rawBackup": "Account profile and QQ logs backed up only in ignored private local evidence"
+  },
+  "repair": {
+    "activityEditor": "Native; global/per-group/peak-valley/keywords/history/continued-participation/send-limits; draft save and cancel; usable offline",
+    "freshProfileTier": 1,
+    "legacyUpgrade": "Persistently disable runtime and replies before restoring services; activity review required before resume",
+    "outboundPauseGuard": "OneBot dispatch blocks paused or obsolete queued text/media/poke tasks and rechecks current allow list",
+    "peakTimeZone": "Device timezone passed to Node runtime"
+  },
+  "deviceValidation": {
+    "schema": 1,
+    "timestamp": "2026-10-07T05:42:37.087274",
+    "appVersion": "0.4.3-activity-settings",
+    "qqMessagesSent": 0,
+    "modelCalls": 0,
+    "passed": true,
+    "fifteenPercentPreview": true,
+    "cancelPreservesConfiguration": true,
+    "perChatSendLimits": {
+      "maxPerMinute": 3,
+      "maxPerHour": 30
+    },
+    "savedTier": 1,
+    "settingsSaveLeavesRuntimeStopped": true,
+    "reopenPreservesPauseAndTier": true
+  },
+  "currentRuntime": {
+    "qqRunning": false,
+    "coreRunning": false,
+    "automaticRepliesEnabled": false,
+    "savedGlobalTier": 1,
+    "savedRandomPercent": 0,
+    "perChatSendLimits": {
+      "maxPerMinute": 3,
+      "maxPerHour": 30
+    }
+  },
+  "validationBoundary": "Response decisions and send queue tested locally with synthetic events and mocked QQ dispatch. Native Android edit/cancel/save/reopen tested with QQ/core stopped. No real QQ messages or model calls during incident repair.",
+  "earlierValidation": "docs/build-validation-0.4.2.json is historical; prior QQ/model and screen-off checks were not rerun on the restricted account.",
+  "remaining": [
+    "Account restriction not resolved or retested",
+    "Real account sending verification remains stopped",
+    "Complete original page parity and initialization",
+    "Community login, encrypted backup, rollback and release signing",
+    "24-hour/network/reboot/multi-ROM/16KB/battery validation"
+  ]
+}

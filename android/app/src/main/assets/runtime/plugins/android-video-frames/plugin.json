@@ -1,0 +1,7 @@
+{
+  "id": "android-video-frames", "name": "安卓视频抽帧", "version": "1.0.0", "apiVersion": 1,
+  "entry": "index.mjs", "category": "media", "enabledByDefault": true,
+  "description": "使用手机私有环境的 FFmpeg 为原核心提供视频画面。缺少依赖时显示不可用原因。",
+  "capabilities": ["video.frames.available", "video.frames"], "permissions": [],
+  "settings": {}, "configSchema": {}
+}

@@ -1,0 +1,13 @@
+# Shell scripts and runtime modules must remain usable after a Windows clone.
+android/app/src/main/assets/runtime/** text eol=lf
+android/app/src/main/assets/runtime/agent-core.zip -text
+android/app/src/main/assets/native/** -text
+android/app/src/main/assets/native/native-artifacts.json text eol=lf
+*.apk -text
+*.zip -text
+*.tar.gz -text
+*.tar.xz -text
+
+# Preserve upstream license/template-string whitespace in generated vendor output.
+android/app/src/main/assets/runtime/subscription-sdk.mjs -whitespace
+android/app/src/main/assets/runtime/subscription-sdk-LICENSES.txt -whitespace

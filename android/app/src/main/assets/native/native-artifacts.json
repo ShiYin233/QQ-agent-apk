@@ -1,0 +1,17 @@
+[
+  {
+    "file": "proot",
+    "size": 290080,
+    "sha256": "ae390526a9a77af0b907be461285ad0d845da0a15f1fd8f0cf9642db39b1f60d"
+  },
+  {
+    "file": "loader64",
+    "size": 17848,
+    "sha256": "fa87c8fa060b822c867f07cd028ddc36778aa6189d575a58268a154ce6592cf7"
+  },
+  {
+    "file": "loader32",
+    "size": 17764,
+    "sha256": "9619a0e79d6bd824c0a81f8fa0474c921a009084de26d4584af88ef192a350d0"
+  }
+]

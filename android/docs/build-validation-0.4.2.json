@@ -1,0 +1,243 @@
+{
+  "schema": 2,
+  "timestamp": "2026-10-06T21:44:49.421255",
+  "appVersion": "0.4.2-background-settings",
+  "applicationId": "cn.qqagent.android",
+  "originalCoreCommit": "e2dc5bbeec4f2b5bde884676cd4917681da84d36",
+  "firstGate": "PASSED_ON_DEVICE",
+  "firstGateEvidenceAppVersion": "0.3.0-native-runtime-service",
+  "firstGateStages": [
+    {
+      "stage": "DEVICE",
+      "outcome": "PASSED"
+    },
+    {
+      "stage": "COMPONENTS",
+      "outcome": "PASSED"
+    },
+    {
+      "stage": "INITIALIZE",
+      "outcome": "PASSED"
+    },
+    {
+      "stage": "LOGIN",
+      "outcome": "PASSED"
+    },
+    {
+      "stage": "CONTACTS",
+      "outcome": "PASSED"
+    },
+    {
+      "stage": "MESSAGING",
+      "outcome": "PASSED"
+    },
+    {
+      "stage": "AGENT_REPLY",
+      "outcome": "PASSED"
+    }
+  ],
+  "device": {
+    "name": "OPPO A6m 5G",
+    "model": "PLT140",
+    "api": 35,
+    "pageSize": 4096,
+    "abi": "arm64-v8a",
+    "usbConnected": true
+  },
+  "sdk": {
+    "min": 31,
+    "compile": 36,
+    "target": 28,
+    "buildTools": "36.0.0"
+  },
+  "build": {
+    "assembleDebug": "PASSED",
+    "testDebugUnitTest": "PASSED",
+    "lintDebug": "PASSED_WITH_WARNINGS",
+    "jdk": "Oracle 21.0.2",
+    "gradle": "8.13",
+    "agp": "8.13.2",
+    "kotlin": "2.2.21",
+    "lintIssues": [
+      {
+        "id": "ChromeOsAbiSupport",
+        "severity": "Warning"
+      },
+      {
+        "id": "ExpiredTargetSdkVersion",
+        "severity": "Warning"
+      },
+      {
+        "id": "UsableSpace",
+        "severity": "Warning"
+      },
+      {
+        "id": "UsableSpace",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning"
+      }
+    ]
+  },
+  "unitTests": [
+    {
+      "name": "cn.qqagent.android.gate.GatePolicyTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.qqagent.android.gate.SafeTarTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "cn.qqagent.android.gate.VerifiedDownloadTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "adapterTests": {
+    "dsmlPassed": 7,
+    "androidPolicyPassed": 3
+  },
+  "apk": {
+    "filename": "QQ-Agent-0.4.2-background-settings-arm64-debug.apk",
+    "bytes": 30506768,
+    "sha256": "e0f6b04e4d595fb173605b91dac7bf8e647ab1f12b966901a94cd757e6cccde7",
+    "signature": "Verified Android local debug signing; not release signing",
+    "certificateSha256": "d343b5a0fdaedbea9c6777b90b53eb75c4752187a5d09bb4f25ae5d6e87ec955",
+    "zipalign16k": "PASSED; not proof of 16 KB runtime compatibility"
+  },
+  "nativeConsole": {
+    "pages": [
+      {
+        "page": "会话",
+        "contentRendered": true
+      },
+      {
+        "page": "存档",
+        "contentRendered": true
+      },
+      {
+        "page": "记忆",
+        "contentRendered": true
+      },
+      {
+        "page": "用量",
+        "contentRendered": true
+      },
+      {
+        "page": "技能",
+        "contentRendered": true
+      },
+      {
+        "page": "插件",
+        "contentRendered": true
+      },
+      {
+        "page": "协议管理",
+        "contentRendered": true
+      },
+      {
+        "page": "设置",
+        "contentRendered": true
+      }
+    ],
+    "authenticatedRoutes": 14,
+    "invalidToken": {
+      "/api/status": 401,
+      "/api/android/runtime": 401
+    },
+    "foreignOrigin": {
+      "/api/status": 403,
+      "/api/android/runtime": 403
+    },
+    "sseHello": true,
+    "emptyAllowListResumeStatus": 409,
+    "configurationContainsSecrets": false,
+    "automaticRepliesEnabled": false,
+    "telemetryEnabled": false,
+    "scope": "Basic navigation/read and selected operations; desktop parity and empty-profile details not fully covered"
+  },
+  "media": {
+    "schema": 1,
+    "timestamp": 1791292396663,
+    "executedOn": "ANDROID_APPLICATION_PROCESS",
+    "qqMessagesSent": 0,
+    "modelCalls": 0,
+    "passed": true,
+    "ffmpegVersion": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "imageCompression": {
+      "sourceBytes": 3699369,
+      "outputBytes": 140994,
+      "width": 480,
+      "height": 360,
+      "passed": true
+    },
+    "gifConversion": {
+      "width": 480,
+      "height": 270,
+      "frames": 24,
+      "passed": true
+    },
+    "videoFrames": {
+      "route": "frames",
+      "count": 3,
+      "passed": true
+    }
+  },
+  "background": {
+    "notificationEnabled": true,
+    "qqRecoverySeconds": 30.8,
+    "qqRecoveryAppVersion": "0.3.0-native-runtime-service",
+    "screenOffPassed": true,
+    "screenOffStatus": "PASSED_SHORT_USB_CHECK",
+    "screenOffAppVersion": "0.4.2-background-settings",
+    "screenOffSeconds": 77.8,
+    "screenOffSamples": 5,
+    "backgroundSetting": "OPPO completely allow background activity; selected in device UI after connected screen-off timeout",
+    "nativeSettingsEntryVerified": true,
+    "oppoSettingVerifiedAfterUpdate": true,
+    "usbConnectedAtStart": true,
+    "usbConnectedAtEnd": true,
+    "twentyFourHourPassed": false,
+    "dozePassed": false,
+    "rebootRestore": "NOT_RUN"
+  },
+  "remaining": [
+    "Complete in-app first initialization/download UI",
+    "Full desktop page parity",
+    "Account switching",
+    "Community login/captcha and real install verification",
+    "Encrypted backup/restore",
+    "Component rollback",
+    "Release signing and redistribution audit",
+    "Real QQ media/model regression",
+    "24-hour/network/reboot/multi-ROM/16KB/battery validation"
+  ],
+  "rawEvidencePolicy": "Raw QQ logs, device identifiers, credentials and full phone reports kept only in ignored local private evidence; excluded from source and APK"
+}

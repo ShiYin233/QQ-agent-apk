@@ -1,0 +1,53 @@
+{
+  "id": "hd2-join-review",
+  "name": "绝地潜兵2入群审核",
+  "version": "1.1.0",
+  "apiVersion": 1,
+  "category": "utility",
+  "author": "QQ Agent",
+  "description": "只审核指定群的普通入群申请。识别真实战备后自动通过，其余保留人工；支持 SnowLuma 和安卓 NapCat。审核开关独立于聊天回复暂停开关。",
+  "entry": "index.js",
+  "enabledByDefault": false,
+  "permissions": [
+    "web_fetch"
+  ],
+  "capabilities": [
+    "hd2-join-review.status"
+  ],
+  "requires": [],
+  "settings": {
+    "enabled": true,
+    "targetGroup": "",
+    "checkInterval": 30,
+    "aiAssist": true
+  },
+  "configSchema": {
+    "enabled": {
+      "type": "boolean",
+      "group": "基础设置",
+      "label": "启用入群审核",
+      "description": "开启后定时检查待审申请并自动处理，关闭后停止自动检查并保留人工待审。"
+    },
+    "targetGroup": {
+      "type": "string",
+      "group": "基础设置",
+      "label": "目标群号",
+      "description": "填写你管理的目标 QQ 群号；未填写时不进行审核。"
+    },
+    "checkInterval": {
+      "type": "number",
+      "group": "检查节奏",
+      "label": "检查间隔（秒）",
+      "description": "每次检查待审申请的时间间隔，默认 30 秒（最少 5 秒）。",
+      "min": 5,
+      "max": 3600
+    },
+    "aiAssist": {
+      "type": "boolean",
+      "group": "判定设置",
+      "label": "启用 AI 辅助识别",
+      "description": "开启后，若规则词库未能明确命中已知战备，将自动调用现有大模型辅助理解长句、口语与复杂表述。"
+    }
+  },
+  "prompt": null
+}

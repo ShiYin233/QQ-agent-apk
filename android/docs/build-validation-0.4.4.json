@@ -1,0 +1,70 @@
+{
+  "schema": 4,
+  "timestamp": "2026-10-07T06:13:19.030488",
+  "appVersion": "0.4.4-login-mentions",
+  "artifact": {
+    "path": "android/artifacts/QQ-Agent-0.4.4-login-mentions-arm64-debug.apk",
+    "bytes": 31255056,
+    "sha256": "0f6e1ff21ef75fb446bd212ae17bb53538858c67ff550ecf49a5c1fe82b687ce",
+    "signing": "Existing debug certificate; APK v2 verified",
+    "alignment": "zipalign -c -P 16 4 passed; does not establish 16KB runtime compatibility"
+  },
+  "hostValidation": {
+    "androidTests": 25,
+    "nodeTests": 25,
+    "lintErrors": 0,
+    "originalCoreUnchanged": true
+  },
+  "diagnosis": {
+    "newGroupAllowed": true,
+    "confirmedAtMeMessages": 2,
+    "modelSessionStatuses": [
+      "noreply",
+      "noreply"
+    ],
+    "modelFinishMisidentifiedDisplayedGroupNicknameAsAnotherAccount": true,
+    "noToolSendAttempt": true
+  },
+  "repair": {
+    "homeLoginEntry": true,
+    "loginState": "Actual local NapCat CheckLoginStatus",
+    "qrRefresh": "Actual local NapCat RefreshQRcode, automatically sync latest stable PNG content",
+    "mentionIdentity": "Original before-context hook and dynamic prompt; trusted atMe metadata and protocol mid",
+    "nativeNoReplyReasonVisible": true,
+    "allowDraftSurvivesUnrelatedConfigRefresh": true
+  },
+  "deviceValidation": {
+    "schema": 1,
+    "timestamp": "2026-10-07T06:12:16.149522",
+    "appVersion": "0.4.4-login-mentions",
+    "qqMessagesSentByVerification": 0,
+    "modelCallsByVerification": 0,
+    "expiredQrPhoneTestPerformed": false,
+    "passed": true,
+    "installedVersionVerified": true,
+    "qqConnectedWhileRepliesPaused": true,
+    "mentionPluginLoadedAndActive": true,
+    "userSettingsPreserved": [
+      "allow",
+      "deny",
+      "store",
+      "send",
+      "persona",
+      "personaByChat",
+      "chatActive",
+      "proactive",
+      "globalBlocklist"
+    ],
+    "nativePausePreserved": true,
+    "homeLoginOpensInOneTap": true,
+    "liveLoginStateRendered": true,
+    "loggedInHidesExpiredQrAndRefresh": true,
+    "readOnlySyncPreservesPause": true
+  },
+  "remaining": [
+    "New-version actual group @ receive/send test",
+    "Expired QR refresh end-to-end phone test",
+    "Original full Android-port plan still requires long-duration/background/reboot/backup/community/compatibility/release validation"
+  ],
+  "historicalEvidence": "Prior current report preserved as build-validation-0.4.3.json; old real-message results do not verify this new version"
+}

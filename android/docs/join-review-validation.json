@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "timestamp": "2026-10-07T10:03:47.471322+00:00",
+  "pluginVersion": "1.1.0",
+  "androidVersion": "0.5.2-join-review",
+  "versionCode": 17,
+  "apk": "android/artifacts/QQ-Agent-0.5.2-join-review-arm64-debug.apk",
+  "apkSha256": "bba59dd40d15740fddf88154a7d414edf1a6acfef3b70b64c19f08934a487545",
+  "build": {
+    "assembleDebug": "passed",
+    "androidUnitTests": 25,
+    "androidUnitTestFailures": 0,
+    "lintErrors": 0,
+    "lintWarnings": 21,
+    "nodeRegressionTests": 102,
+    "nodeFailures": 0,
+    "apkSignatureVerified": true,
+    "apk16kAlignmentVerified": true
+  },
+  "deployment": {
+    "desktopSourceSynchronized": true,
+    "apkPluginAssetsMatchSource": true,
+    "phoneInstalledVersionVerified": true
+  },
+  "phone": {
+    "schema": 1,
+    "timestamp": "2026-10-07T10:02:51.114552+00:00",
+    "version": "0.5.2-join-review",
+    "qqApprovalsByVerifier": 0,
+    "qqMessagesByVerifier": 0,
+    "modelInferenceCallsByVerifier": 0,
+    "pluginLoaded": true,
+    "pluginEnabled": false,
+    "pluginRunning": false,
+    "settingsPreserved": true,
+    "encryptedCredentialsPreserved": true,
+    "automaticRepliesEnabled": true,
+    "qqConnected": true,
+    "privateStatusAuthenticationVerified": true,
+    "protocolReadOnlyCheck": {
+      "roleQueryStatus": "ok",
+      "botRole": "admin",
+      "pendingQueryStatus": "ok",
+      "hasNapCatJoinRequests": true,
+      "visibleTargetPendingCount": 0
+    },
+    "phoneOfflineTests": 50,
+    "passed": true,
+    "targetGroupRedacted": true
+  },
+  "limits": {
+    "realApprovalTested": false,
+    "realModelInferenceTested": false,
+    "desktopLiveConsoleAvailable": false,
+    "pendingListMaximum": 100,
+    "catalogEntries": 110,
+    "androidPluginEnabledByDefault": false
+  },
+  "scope": "Historical validation on 2026-10-07; current publication is rebuilt with an empty default group. See build-validation.json."
+}
