@@ -6,7 +6,7 @@
 
 ## 1. 安装与准备
 
-下载 [0.5.2 调试 APK](https://github.com/ShiYin233/QQ-agent-apk/raw/refs/heads/main/android/artifacts/QQ-Agent-0.5.2-join-review-arm64-debug.apk)，在手机允许安装后打开。允许通知，并在应用耗电管理中允许后台运行；OPPO 对应“完全允许后台行为”。
+下载 [0.5.2 调试 APK](https://github.com/ShiYin233/QQ-agent-apk/releases/download/android-v0.5.2/QQ-Agent-0.5.2-join-review-arm64-debug.apk)，在手机允许安装后打开。允许通知，并在应用耗电管理中允许后台运行；OPPO 对应“完全允许后台行为”。同一 [版本页面](https://github.com/ShiYin233/QQ-agent-apk/releases/tag/android-v0.5.2) 还提供打包源码和 SHA-256 摘要。
 
 首次安装还需一台电脑、数据线、Python 3.11+ 和 Android Platform Tools（`adb`）。开启手机“开发者选项 → USB 调试”，连接后在手机确认调试授权。首次导入完成后，日常运行可以断开数据线，保持手机联网。建议预留至少 4 GB 存储空间，实际占用随组件和日志增长。
 

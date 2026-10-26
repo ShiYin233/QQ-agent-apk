@@ -2,7 +2,9 @@
 
 当前安卓版本：**0.5.2-join-review**（Android 12+ / ARM64 调试验证版）。在手机内运行 QQ Agent 原核心、Linux QQ 与 NapCat，提供原生控制台、扫码登录、API 模型配置、回复名单、活跃设置与绝地潜兵2入群审核插件，无需 Root 或外部 Termux。
 
-**[快速开始](QUICKSTART.md)** · [安卓构建与说明](android/README.md) · [验证结果](android/docs/build-validation.json) · [下载 0.5.2 APK](https://github.com/ShiYin233/QQ-agent-apk/raw/refs/heads/main/android/artifacts/QQ-Agent-0.5.2-join-review-arm64-debug.apk)
+**[快速开始](QUICKSTART.md)** · [安卓构建与说明](android/README.md) · [验证结果](android/docs/build-validation.json) · [源码包与 APK 下载](https://github.com/ShiYin233/QQ-agent-apk/releases/tag/android-v0.5.2) · [Packages](https://github.com/users/ShiYin233/packages?repo_name=QQ-agent-apk)
+
+Packages 以 Maven 包 `cn.qqagent.android:qq-agent-apk:0.5.2-join-review` 发布，包含源码 ZIP、`android-arm64` 分类 APK 和摘要附件。浏览器直接下载请使用 Releases；Packages 下载需要 GitHub 认证。详见 [发布说明](android/docs/publishing.md)。
 
 在已完成“第一关”实机联调的手机上覆盖安装 APK，完成 QQ 扫码登录。在“设置”保存 API 地址、模型名和 Key，在“协议管理”保存允许回复的群与好友，再到“活跃设置”保存 **1 档（仅被 @ 响应）**，最后手动启用名单内自动回复。私聊不受群聊档位影响；入群审核有独立开关，需先填写自己的群号。全新设备需电脑通过 USB 导入四个锁定组件，并完成首次真实 QQ/模型收发联调，详见快速开始。
 

@@ -1,0 +1,70 @@
+name: Publish Android source and APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: publish-android
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the selected commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Java and Maven authentication
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '21'
+          server-id: github
+          server-username: GITHUB_ACTOR
+          server-password: GITHUB_TOKEN
+
+      - name: Package committed source and validated APK
+        id: bundle
+        run: python3 android/tools/package_release.py --output release/android --github-output "$GITHUB_OUTPUT"
+
+      - name: Publish source ZIP and APK to GitHub Packages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.bundle.outputs.version }}
+          SOURCE: ${{ steps.bundle.outputs.source }}
+          APK: ${{ steps.bundle.outputs.apk }}
+          REGISTRY: ${{ steps.bundle.outputs.repository_url }}
+        run: |
+          mvn --batch-mode --no-transfer-progress org.apache.maven.plugins:maven-deploy-plugin:3.2.0:deploy-file \
+            -DrepositoryId=github "-Durl=$REGISTRY" \
+            -DpomFile=release/android/package.pom \
+            "-Dfile=release/android/$SOURCE" \
+            "-Dfiles=release/android/$APK,release/android/SHA256SUMS.txt" \
+            -Dclassifiers=android-arm64,checksums -Dtypes=apk,txt
+
+      - name: Publish browser download attachments
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ steps.bundle.outputs.tag }}
+          VERSION: ${{ steps.bundle.outputs.version }}
+          COMMIT: ${{ steps.bundle.outputs.commit }}
+          SOURCE: ${{ steps.bundle.outputs.source }}
+          APK: ${{ steps.bundle.outputs.apk }}
+        run: |
+          gh release create "$TAG" --target "$COMMIT" --prerelease \
+            --title "QQ Agent Android $VERSION" --notes-file release/android/release-notes.md \
+            "release/android/$SOURCE" "release/android/$APK" release/android/SHA256SUMS.txt
+
+      - name: Summarize publication
+        env:
+          TAG: ${{ steps.bundle.outputs.tag }}
+          VERSION: ${{ steps.bundle.outputs.version }}
+        run: |
+          printf 'Published Maven package: cn.qqagent.android:qq-agent-apk:%s\n\n' "$VERSION" >> "$GITHUB_STEP_SUMMARY"
+          printf 'Downloads: https://github.com/%s/releases/tag/%s\n' "$GITHUB_REPOSITORY" "$TAG" >> "$GITHUB_STEP_SUMMARY"
